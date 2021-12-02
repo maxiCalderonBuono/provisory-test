@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+
 
 function App() {
+
+  function Repeat(props) {
+    let items = [];
+    for (let i = 0; i < props.numTimes; i++) {
+      items.push(props.children(i));
+    }
+    return <div>{items}</div>;
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Repeat numTimes={10}>
+        {(index) => <div key={index}>This is item {index} in the list</div>}
+      </Repeat>
   );
 }
 
